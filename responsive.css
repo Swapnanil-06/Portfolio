@@ -10,3 +10,6 @@
 @media(hover:none){.map-node:hover,.index-rows button:hover b,.credentials-rail button:hover b,.button:hover{transform:none}.carousel-top>button,.search-trigger,.open-notes{touch-action:manipulation}}
 @media(max-width:650px){.personal-identity>.profile-carousel{margin-top:24px;margin-bottom:25px}.personal-identity>.personal-bio{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.map-node,.personal-widget,.workspace{animation:none;transition:none}}
+
+/* Community roles remain legible alongside the background records. */
+.community-leadership{margin-top:32px;padding:26px 0 4px;border-top:1px solid #c9cec4}.community-leadership h3{font-size:20px;line-height:1.4;letter-spacing:-.4px;margin:0 0 20px;color:#243b2c}.community-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.community-roles>div{padding:20px 16px;background:#e7ebdf;border:1px solid #cbd3c2;border-radius:6px;min-width:0}.community-roles strong{display:block;font-size:17px;line-height:1.4;color:#243b2c}.community-roles span{display:block;font-size:14px;line-height:1.65;margin-top:8px;color:#485344}.email-address{overflow-wrap:anywhere}@media(max-width:650px){.community-roles{grid-template-columns:1fr}.community-roles>div{padding:18px 20px}.community-roles span{margin-top:4px}.community-leadership{margin-top:25px}}
