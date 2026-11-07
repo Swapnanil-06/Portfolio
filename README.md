@@ -8,7 +8,7 @@ Preview: python -m http.server 4174 --directory dist
 
 No package dependencies. Serve dist/ with any static host.
 
-The current design is an engineering desk: a neutral outer page, an interactive map connecting career interests to actual experience/projects, and a local Ctrl/Cmd-K search palette. Quant development is an interest lens, and the JPMorgan Chase exercise is explicitly a job simulation. The current Morgan Stanley title is Software Engineering Intern.
+The opening personal-profile widget introduces Swapnanil by name, followed by his SWE internship, bio and links. Native expandable experience, education and awards records sit alongside it; education opens initially. The engineering-desk project map and local Ctrl/Cmd-K search remain below. Quant development is an interest lens, and the JPMorgan Chase exercise is explicitly a job simulation. The current Morgan Stanley title is Software Engineering Intern. The profile widget uses identity.css.
 
 Files: index.html (content), desk.css and desk.js (responsive map, evidence inspector, local search and London clock), styles.css and story.css (shared widget primitives), overview.js (experience/education panels), script.js (project dialogs and hardware demos), project-widgets.js (project-specific experiments). Reduced motion disables entrance and connection animations. No API keys or external AI service are needed for search.
 
