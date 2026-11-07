@@ -8,7 +8,7 @@ Preview: python -m http.server 4174 --directory dist
 
 No package dependencies. Serve dist/ with any static host.
 
-Files: index.html (content), styles.css and reposition.css (responsive matte design and motion), script.js (dialogs and hardware demos), project-widgets.js (focus tabs, project filters and project-specific widgets).
+Files: index.html (short visual story), story.css (graphite/cobalt responsive design), story.js (scroll chapters, signal canvas and project navigation), styles.css (shared widget primitives), script.js (dialogs and hardware demos), project-widgets.js (project-specific widgets). Reduced motion presents all story chapters without scroll animation.
 
 The placement widget is an illustrative greedy local-search demo, separate from the reported competition implementation. Career facts and metrics were supplied by the owner.
 
