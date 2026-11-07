@@ -8,7 +8,7 @@ Preview: python -m http.server 4174 --directory dist
 
 No package dependencies. Serve dist/ with any static host.
 
-Files: index.html (short visual story), story.css (graphite/cobalt responsive design), story.js (scroll chapters, signal canvas and project navigation), styles.css (shared widget primitives), script.js (dialogs and hardware demos), project-widgets.js (project-specific widgets). Reduced motion presents all story chapters without scroll animation.
+Files: index.html (compact factual overview), overview.css and overview.js (responsive layout, accessible background explorer and project filters), styles.css and story.css (shared style/widget primitives), script.js (dialogs and hardware demos), project-widgets.js (project-specific widgets). The current homepage has no pinned scroll chapters, oversized name or separate Finance project-count category. Reduced motion disables entrance and panel animations.
 
 The placement widget is an illustrative greedy local-search demo, separate from the reported competition implementation. Career facts and metrics were supplied by the owner.
 
