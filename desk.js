@@ -65,7 +65,7 @@ function renderProjectRoute(key) {
     const tags = row.querySelector('.skim-skills');
     tags.replaceChildren();
     facts.skills.forEach(text => { const li = document.createElement('li'); li.textContent = text; tags.append(li); });
-    row.querySelector('.skim-preview').setAttribute('aria-label', 'Explore ' + item.title);
+    row.querySelector('.skim-preview').setAttribute('aria-label', 'Try ' + item.title + ' interactive demo');
     if (node) {
       node.querySelector('strong').textContent = item.title;
       node.querySelector('small').textContent = item.short;

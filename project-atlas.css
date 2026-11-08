@@ -115,3 +115,13 @@
   .stage-pagination > button { min-width: 44px; min-height: 44px; }
 }
 @media(prefers-reduced-motion:reduce) { .atlas-body *,#project-studio-dialog[open] { animation: none!important; } }
+
+/* A small invitation makes the interactive affordance explicit. */
+.scan-section-heading > .project-click-hint { display: flex; align-items: center; gap: 9px; font-size: 13px; line-height: 1.6; color: #4d6346; margin-bottom: 3px; }
+.project-click-hint svg { flex-shrink: 0; color: #7b8f66; }
+.atlas-body .skim-preview b { transition: transform .2s; }
+.atlas-body .skim-project:hover .skim-preview b { transform: translate(2px,-2px); }
+@media(max-width:750px) {
+  .selected-scan .scan-section-heading { flex-direction: column; gap: 10px; }
+  .scan-section-heading > .project-click-hint { display: flex; font-size: 12px; margin: 0; }
+}
