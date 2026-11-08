@@ -18,7 +18,7 @@ const projectBench = document.querySelector('.project-workbench');
 const projectRows = [...document.querySelectorAll('[data-skim-row]')];
 const projectNodes = [...document.querySelectorAll('[data-map-position]')];
 const projectPlayback = document.getElementById('project-playback');
-let projectRoute = 'selected', projectIndex = 0;
+let projectRoute = 'selected', projectIndex = 0, projectPinned = false;
 let projectPaused = reducedMotion, projectHover = false, projectFocus = false, projectVisible = false, projectTimeout;
 
 function openDeskItem(key, returnFocus) {
@@ -44,7 +44,9 @@ function selectProject(index, manual = false) {
   document.querySelectorAll('.project-canvas .connection-lines path').forEach((path, i) => path.classList.toggle('selected', i === index));
   document.getElementById('project-active-category').textContent = deskItems[key].category;
   document.getElementById('project-active-title').textContent = deskItems[key].title;
-  if (manual) projectPaused = true;
+  projectBench.dataset.activeProject = key;
+  document.dispatchEvent(new CustomEvent('project-preview-change', {detail: {key}}));
+  if (manual) projectPinned = true;
   scheduleProjectPreview();
 }
 
@@ -65,33 +67,39 @@ function renderProjectRoute(key) {
     detail.dataset.project = itemKey;
     detail.setAttribute('aria-label', 'Open ' + item.title + ' details');
     row.querySelector('.skim-preview').setAttribute('aria-label', 'Preview ' + item.title);
-    node.querySelector('strong').textContent = item.title;
-    node.querySelector('small').textContent = item.short;
+    if (node) {
+      node.querySelector('strong').textContent = item.title;
+      node.querySelector('small').textContent = item.short;
+    }
   });
   projectBench.dataset.route = key;
-  projectBench.querySelector('.map-origin small').innerHTML = ({selected: 'SELECTED<br>PROJECTS', software: 'SOFTWARE<br>ENGINEERING', quant: 'QUANTITATIVE<br>ENGINEERING', systems: 'SYSTEMS<br>ENGINEERING'})[key];
   selectProject(0);
 }
 
 function scheduleProjectPreview() {
   clearTimeout(projectTimeout);
   const globalPause = document.body.classList.contains('motion-paused');
-  const running = !projectPaused && !projectHover && !projectFocus && projectVisible && !document.hidden && !globalPause;
+  const running = !projectPaused && !projectPinned && !projectHover && !projectFocus && projectVisible && !document.hidden && !globalPause;
   projectBench.classList.toggle('preview-paused', !running);
+  projectBench.classList.toggle('scene-paused', projectPaused || globalPause);
   projectPlayback.setAttribute('aria-label', projectPaused ? 'Play project preview' : 'Pause project preview');
   const icon = projectPlayback.querySelector('[data-project-playback-icon]');
   const label = projectPlayback.querySelector('[data-project-playback-label]');
   const iconText = projectPaused ? '▶' : 'Ⅱ', labelText = projectPaused ? 'Play' : 'Pause';
   if (icon.textContent !== iconText) icon.textContent = iconText;
   if (label.textContent !== labelText) label.textContent = labelText;
-  if (running) projectTimeout = setTimeout(() => selectProject((projectIndex + 1) % 3), 4800);
+  if (running) projectTimeout = setTimeout(() => selectProject((projectIndex + 1) % 3), 8000);
 }
 
-document.querySelectorAll('[data-route]').forEach(button => button.onclick = () => { projectPaused = true; renderProjectRoute(button.dataset.route); });
+document.querySelectorAll('[data-route]').forEach(button => button.onclick = () => { projectPinned = true; renderProjectRoute(button.dataset.route); });
 document.querySelectorAll('[data-project-preview]').forEach(button => button.onclick = () => selectProject(Number(button.dataset.projectPreview), true));
+projectRows.forEach(row => row.addEventListener('click', event => {
+  if (!event.target.closest('button, a')) selectProject(Number(row.dataset.skimRow), true);
+}));
 projectNodes.forEach(button => button.onclick = () => selectProject(Number(button.dataset.mapPosition), true));
 document.getElementById('open-project-notes').onclick = event => openDeskItem(projectRoutes[projectRoute][projectIndex], event.currentTarget);
-projectPlayback.onclick = () => { projectPaused = !projectPaused; scheduleProjectPreview(); };
+projectPlayback.onclick = () => { projectPaused = !projectPaused; if (!projectPaused) projectPinned = false; scheduleProjectPreview(); };
+document.addEventListener('project-stage-interaction', () => { projectPinned = true; scheduleProjectPreview(); });
 projectBench.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') { projectHover = true; scheduleProjectPreview(); } });
 projectBench.addEventListener('pointerleave', () => { projectHover = false; scheduleProjectPreview(); });
 projectBench.addEventListener('focusin', () => { projectFocus = true; scheduleProjectPreview(); });
