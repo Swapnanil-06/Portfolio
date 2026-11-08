@@ -93,7 +93,7 @@ function scheduleProjectPreview() {
 }
 
 document.querySelectorAll('[data-route]').forEach(button => button.onclick = () => { projectPinned = true; renderProjectRoute(button.dataset.route); });
-function openProjectExperiment(button) { selectProject(Number(button.dataset.projectPreview), true); document.dispatchEvent(new CustomEvent('open-project-studio', {detail: {trigger: button}})); }
+function openProjectExperiment(button) { selectProject(Number(button.dataset.projectPreview), true); const key=projectRoutes[projectRoute][projectIndex]; document.dispatchEvent(new CustomEvent(key==='agent'?'open-portfolio-chat':'open-project-studio', {detail: {trigger: button}})); }
 document.querySelectorAll('[data-project-preview]').forEach(button => button.onclick = () => openProjectExperiment(button));
 projectRows.forEach(row => row.addEventListener('click', event => {
   if (!event.target.closest('button, a')) openProjectExperiment(row.querySelector('[data-project-preview]'));
