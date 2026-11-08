@@ -3,7 +3,11 @@ projects.agent={label:'SOFTWARE / DEPLOYED AI ASSISTANT',title:'Personal AI webs
 projects.credit={label:'FINANCE / JOB SIMULATION',title:'Credit analysis & score bucketing',body:'In the JPMorgan Chase Quantitative Research job simulation, I analysed a book of loans to estimate default probabilities and used dynamic programming to bucket FICO scores.',sections:[['What this represents','A job simulation completed in June 2025, rather than employment or a production lending model.'],['Explore the idea','The toy example below groups synthetic scores into equal-width buckets. It illustrates discretisation; the original exercise used dynamic programming to choose boundaries. No default probabilities or real borrower data are shown.']]};
 projects.network={label:'SOFTWARE / GRAPH ALGORITHMS',title:'Network route optimisation',body:'A C implementation of Kruskal’s algorithm for a minimum spanning tree, with weighted-network file input and edge sorting.',sections:[['The problem','Connect all nodes with minimum total edge weight, without introducing cycles.'],['Try a small example','Step through a synthetic four-node graph. Edges are considered from lowest weight upward; an edge is accepted only if it joins different components.']]};
 function mountProjectWidget(key,content){
- if(key==='replay'){const link=document.createElement('a');link.className='button primary';link.href='https://github.com/Swapnanil-06/time-travel-debugger-for-financial-research';link.target='_blank';link.rel='noopener noreferrer';link.textContent='View source on GitHub ↗';content.append(link);return;}
+ if(key==='replay'){
+  const links=document.createElement('div');links.className='build-stage-buttons';
+  [['Try live demo ↗','https://financial-research-project.swapnanilchattopadhyay06.workers.dev','button primary'],['View source on GitHub ↗','https://github.com/Swapnanil-06/time-travel-debugger-for-financial-research','button']].forEach(([label,url,className])=>{const link=document.createElement('a');link.className=className;link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=label;links.append(link);});
+  content.append(links);return;
+ }
 
  if(key==='placement'){content.append(document.getElementById('placement-template').content.cloneNode(true));initPlacement();return}
  if(key==='mac'){const heading=document.createElement('h3');heading.textContent='Explore the limits of acceleration';content.append(heading,document.getElementById('amdahl-template').content.cloneNode(true));initAmdahl();return}
