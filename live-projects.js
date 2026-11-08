@@ -60,10 +60,10 @@
     else studio.removeAttribute('aria-label');
     projectRoutes[projectRoute].forEach((key, i) => {
       const button = projectRows[i].querySelector('[data-project-preview]');
-      const text = key === 'agent' ? 'Chat with me' : key === 'arena' ? 'Play Agent Arena' : 'Try interactive demo';
+      const text = key === 'replay' ? 'Explore Research Replay' : key === 'agent' ? 'Chat with me' : key === 'arena' ? 'Play Agent Arena' : 'Try interactive demo';
       button.querySelector('span').textContent = text;
-      button.setAttribute('aria-label', key === 'agent' ? 'Chat with Swapnanil’s AI assistant' : key === 'arena' ? 'Play the real Agent Arena game' : 'Try ' + deskItems[key].title + ' interactive demo');
-      button.setAttribute('aria-controls', key === 'agent' ? 'portfolio-chat' : 'project-studio-dialog');
+      button.setAttribute('aria-label', key === 'replay' ? 'Explore Research Replay project and source' : key === 'agent' ? 'Chat with Swapnanil’s AI assistant' : key === 'arena' ? 'Play the real Agent Arena game' : 'Try ' + deskItems[key].title + ' interactive demo');
+      button.setAttribute('aria-controls', key === 'replay' ? 'project-dialog' : key === 'agent' ? 'portfolio-chat' : 'project-studio-dialog');
     });
   }
   document.addEventListener('project-preview-change', updateLiveProjects);

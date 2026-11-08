@@ -1,5 +1,7 @@
 const deskItems={ms:{title:'Morgan Stanley',subtitle:'Software Engineering Intern',category:'EXPERIENCE',copy:'Application Infrastructure in London. Full-stack work with Angular and Java Spring Boot in a Linux environment.',skills:['Java','Spring Boot','Angular','Linux'],note:'Jun 2026 – Jun 2027 · Year in industry',short:'Software engineering'},arena:{title:'Agent Arena',subtitle:'OpenAI DevDay Community Hackathon',category:'HACKATHON / TOP 6 FINALIST',copy:'A 3D replica of the event venue and a Codex pets-themed shooter, built with my team. Top 6 finalist among 200+ participants.',skills:['Interactive software','3D environments','Hackathon'],note:'Team project · Community hackathon',short:'OpenAI DevDay Hackathon'},agent:{title:'AI website agent',subtitle:'A deployed Python assistant',category:'SOFTWARE / AI',copy:'Built with Groq, Gradio and an OpenAI-compatible API. Deployed on Hugging Face Spaces with secrets management and notifications.',skills:['Python','LLM APIs','Gradio'],note:'Personal project · Deployed assistant',short:'Python / LLM APIs'},placement:{title:'Auction-based placement',subtitle:'PARTCL × HRT Macro Placement Competition',category:'OPTIMISATION / ALGORITHMS',copy:'A Python algorithm treating macros as bidders and locations as goods, balancing wire length, area and density within a fixed runtime.',skills:['Python','Optimisation','Algorithms'],note:'Competition project · April 2026',short:'PARTCL × HRT competition'},credit:{title:'Credit analysis',subtitle:'JPMorgan Chase Quantitative Research job simulation',category:'JOB SIMULATION',copy:'Analysed loan default probabilities and used dynamic programming to bucket FICO scores. A learning simulation, rather than employment.',skills:['Python','Dynamic programming','Credit analysis'],note:'Job simulation · June 2025',short:'Quant research job simulation'},network:{title:'Network route optimisation',subtitle:'Kruskal’s minimum spanning tree',category:'ALGORITHMS / C',copy:'A C implementation for weighted networks, with edge sorting, file-based input and minimum spanning tree construction.',skills:['C','Graph algorithms','Data structures'],note:'University project · May 2025',short:'C / Graph algorithms'},riscv:{title:'Ripple-32',subtitle:'RISC-V CPU · Team lead',category:'DIGITAL HARDWARE / VERIFICATION',copy:'Leading eight engineers designing a CPU from scratch. Register architecture, control logic and 30+ cocotb tests.',skills:['Verilog','RISC-V','cocotb'],note:'Ongoing team project · SHaRC',short:'RISC-V / RTL verification'},mac:{title:'Vector MAC engine',subtitle:'Pipelined INT8 compute for FPGA',category:'COMPUTE ARCHITECTURE',copy:'Word-length analysis and a pipelined vector multiply-accumulate design, evaluated through Vivado synthesis and timing analysis.',skills:['Verilog','Vivado','FPGA'],note:'University project · May 2026',short:'FPGA / Pipelining'}};
+deskItems.replay = {title:'Research Replay',subtitle:'Time-travel debugger for financial research',category:'SOFTWARE / FINANCIAL RESEARCH',copy:'Captures research inputs and outputs as SHA-256-addressed artifacts, compares runs and reproduces earlier results with exact replay.',skills:['Python','SQLite','Reproducibility','SHA-256'],note:'Personal project · Research reproducibility',short:'Python / Financial research'};
 const projectFacts = {
+  replay: { context: 'Personal project · Financial research', copy: 'Capture, compare and replay financial research runs.', result: 'Exact replay · Artifact checks · Release gates', skills: ['Python', 'SQLite', 'Reproducibility'] },
   arena: { context: 'OpenAI DevDay Community Hackathon', copy: 'A team-built 3D venue and playable shooter.', result: 'Top 6 finalist · 200+ participants', skills: ['3D environments', 'Interactive software'] },
   placement: { context: 'PARTCL × HRT competition', copy: 'Auction-based optimisation of chip layouts.', result: 'Auction theory applied to chip placement', skills: ['Python', 'Optimisation', 'Algorithms'] },
   agent: { context: 'Personal project · Deployed', copy: 'A deployed assistant built with Python and LLM APIs.', result: 'Groq · Gradio · OpenAI-compatible API', skills: ['Python', 'LLM APIs', 'Gradio'] },
@@ -9,9 +11,9 @@ const projectFacts = {
   mac: { context: 'University project', copy: 'Pipelined INT8 vector computation for FPGA.', result: 'Area and latency evaluation with Vivado', skills: ['Verilog', 'FPGA', 'Vivado'] }
 };
 const projectRoutes = {
-  selected: ['arena', 'placement', 'agent'],
-  software: ['arena', 'agent', 'network'],
-  quant: ['placement', 'credit', 'network'],
+  selected: ['replay', 'arena', 'placement'],
+  software: ['replay', 'agent', 'network'],
+  quant: ['replay', 'placement', 'credit'],
   systems: ['riscv', 'mac', 'network']
 };
 const projectBench = document.querySelector('.project-workbench');
@@ -93,7 +95,7 @@ function scheduleProjectPreview() {
 }
 
 document.querySelectorAll('[data-route]').forEach(button => button.onclick = () => { projectPinned = true; renderProjectRoute(button.dataset.route); });
-function openProjectExperiment(button) { selectProject(Number(button.dataset.projectPreview), true); const key=projectRoutes[projectRoute][projectIndex]; document.dispatchEvent(new CustomEvent(key==='agent'?'open-portfolio-chat':'open-project-studio', {detail: {trigger: button}})); }
+function openProjectExperiment(button) { selectProject(Number(button.dataset.projectPreview), true); const key=projectRoutes[projectRoute][projectIndex]; if(key==='replay'){openDeskItem(key,button);return;} document.dispatchEvent(new CustomEvent(key==='agent'?'open-portfolio-chat':'open-project-studio', {detail: {trigger: button}})); }
 document.querySelectorAll('[data-project-preview]').forEach(button => button.onclick = () => openProjectExperiment(button));
 projectRows.forEach(row => row.addEventListener('click', event => {
   if (!event.target.closest('button, a')) openProjectExperiment(row.querySelector('[data-project-preview]'));

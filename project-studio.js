@@ -184,6 +184,7 @@
     draw();wake();
   }
   function select(next) {
+    if(!settings[next])return;
     if(key===next)return;key=next;orbit=0;selected=-1;player=[0,0];destination=[0,0];beacon=[3,-2];beacons=0;
     cells=[[-4,-3],[0,2],[-2,-3],[2,2],[0,-3],[-4,0],[2,-3],[-2,2],[2,0],[-2,0],[-4,2],[0,0]];
     visual=cells.map(p=>[...p]);request=-1;phase=-1;treeCount=0;cpuCycle=0;macRun=-1;buckets=4;
