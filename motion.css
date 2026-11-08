@@ -1,0 +1,83 @@
+/* Keep the reading path fixed; put motion inside the visual widgets. */
+.intro-scan.personal-widget { align-items: center; gap: 62px; padding-block: 42px; }
+.intro-proof { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; border-block: 1px solid #cdd3c9; padding: 15px 0; margin-top: 22px; }
+.intro-proof a { min-width: 0; }
+.intro-proof strong { display: block; font-size: 21px; font-weight: 550; line-height: 1.5; letter-spacing: -.4px; }
+.intro-proof span { display: block; font-size: 12px; line-height: 1.65; margin-top: 3px; color: #536058; }
+.intro-proof a:hover strong { color: #9e5636; }
+.motion-profile.profile-carousel { align-self: center; border: 1px solid #c6cdbf; background: #e6e9de; border-radius: 7px; padding: 22px 25px 0; overflow: hidden; min-width: 0; }
+.motion-profile .carousel-top { margin-bottom: 20px; padding-bottom: 15px; border-color: #c3ccba; }
+.motion-profile .carousel-top > span { font-size: 10px; color: #52634b; }
+.motion-profile .carousel-top > button { min-height: 36px; font-size: 12px; background: #f0f2e9; border-color: #c1cbb7; color: #3d5137; padding: 6px 10px; }
+.motion-profile .profile-slides { min-height: 368px; }
+.motion-profile .slide-label { color: #52634b; font-size: 10px; }
+.motion-profile .profile-slide h2 { font-size: 28px; color: #293d30; line-height: 1.25; margin: 14px 0 9px; }
+.motion-profile .slide-role { font-size: 15px; color: #3d5137; margin: 0; line-height: 1.6; }
+.motion-profile .slide-detail { font-size: 14px; line-height: 1.75; color: #53634c; margin: 13px 0; }
+.motion-profile .slide-detail > strong { color: #3d5137; }
+.motion-profile .slide-stack { margin-top: 13px; gap: 7px; }
+.motion-profile .slide-stack > span { font-size: 11px; color: #405538; background: #eef0e6; border-color: #c4ceb8; }
+.motion-profile .slide-previous { margin-top: 18px; padding-top: 15px; border-color: #c3ccba; }
+.motion-profile .slide-previous > span { color: #53634c; font-size: 9px; }
+.motion-profile .slide-previous > strong { font-size: 19px; color: #30452e; margin-top: 5px; }
+.motion-profile .slide-previous > p { font-size: 13px; color: #53634c; margin-top: 4px; }
+.motion-profile .slide-link { color: #3b5333; font-size: 13px; min-height: 44px; margin-top: 14px; padding-top: 13px; border-color: #c3ccba; }
+.motion-profile .academic-average { margin: 25px 0; gap: 20px; }
+.motion-profile .academic-average > strong { font-size: 65px; color: #415d33; }
+.motion-profile .academic-average > p { font-size: 14px; color: #405438; }
+.motion-profile .academic-average > p > span { color: #53634c; }
+.motion-profile .rolling-award { gap: 18px; margin-block: 24px; }
+.motion-profile .rolling-award > span { color: #405d32; font-size: 33px; min-width: 88px; }
+.motion-profile .rolling-award h2 { font-size: 23px; margin: 0 0 7px; }
+.motion-profile .rolling-award p { font-size: 12px; line-height: 1.8; color: #53634c; }
+.motion-profile .rolling-award.secondary { margin-block: 20px; gap: 18px; }
+.motion-profile .rolling-award.secondary > span { font-size: 29px; width: 88px; }
+.motion-profile .rolling-award.secondary strong { font-size: 15px; color: #3d5137; }
+.motion-profile .olympiad-lines > p { font-size: 12px; line-height: 1.8; color: #53634c; }
+.motion-profile .olympiad-lines strong { color: #3d5137; }
+.motion-profile .carousel-controls { border-color: #c3ccba; padding: 15px 0; gap: 10px; }
+.motion-profile .carousel-controls > div { gap: 14px; }
+.motion-profile .carousel-controls button { min-height: 34px; color: #53634c; font-size: 11px; }
+.motion-profile .carousel-controls button[aria-pressed=true] { color: #2f452d; }
+.motion-profile .carousel-controls > span { font-size: 10px; color: #53634c; }
+.motion-profile .carousel-progress { height: 3px; margin-inline: -25px; background: #d4dccb; }
+.motion-profile .carousel-progress > span { background: #7a8f63; }
+.arena-sweep { position: absolute; inset: 0; background: linear-gradient(110deg,transparent 35%,#c7dda512 48%,#c7dda52c 50%,transparent 54%); transform: translateX(-100%); animation: arena-scan 6s linear infinite; }
+.arena-cursor { position: absolute; right: 44px; top: 45px; color: #c4d1aa; font: 24px/1 var(--mono); animation: arena-cursor 8s ease-in-out infinite; }
+.arena-grid { animation: arena-grid 16s ease-in-out infinite alternate; }
+.placement-wires { position: absolute; top: 20px; left: 50%; width: 180px; height: 100px; transform: translateX(-50%); z-index: 1; pointer-events: none; }
+.placement-wires path { fill: none; stroke: #5d7350; stroke-width: 1.4; stroke-dasharray: 5 5; animation: wire-flow 3s linear infinite; }
+.placement-art i { animation: macro-shift 7s ease-in-out infinite; }
+.placement-art i:nth-child(2) { animation-delay: -1.5s; }
+.placement-art i:nth-child(3) { animation-delay: -3s; }
+.placement-art i:nth-child(4) { animation-delay: -4.5s; }
+.placement-art i:nth-child(5) { animation: macro-copper 7s ease-in-out infinite; }
+.agent-art span { animation: agent-stage 4.8s ease-in-out infinite; }
+.agent-art span:nth-of-type(2) { animation-delay: 1.6s; }
+.agent-art span:nth-of-type(3) { animation-delay: 3.2s; }
+.agent-art i { position: relative; }
+.agent-art i::after { content: ''; position: absolute; inset: -2px 0; width: 5px; background: #9e7650; border-radius: 50%; animation: agent-signal 1.6s linear infinite; }
+.project-cover:not(.motion-visible) *, .motion-paused .project-cover *, .motion-paused .project-cover *::after, .motion-background .project-cover *, .motion-background .project-cover *::after { animation-play-state: paused!important; }
+@keyframes arena-scan { to { transform: translateX(100%); } }
+@keyframes arena-cursor { 0%,100% { transform: translate(0,0); opacity: .45; } 35% { transform: translate(-30px,25px); opacity: 1; } 70% { transform: translate(12px,35px); opacity: .7; } }
+@keyframes arena-grid { from { transform: perspective(350px) rotateX(35deg) rotateZ(-12deg) translateY(-5px); } to { transform: perspective(350px) rotateX(35deg) rotateZ(-12deg) translateY(12px); } }
+@keyframes wire-flow { to { stroke-dashoffset: -40; } }
+@keyframes macro-shift { 0%,20%,80%,100% { transform: translateY(0); } 40%,60% { transform: translateY(4px); } }
+@keyframes macro-copper { 0%,20%,80%,100% { transform: translateY(0); background: #a46b48; } 40%,60% { transform: translateY(-5px); background: #b77e55; } }
+@keyframes agent-stage { 0%,28% { background: #d6c4a9; border-color: #9c7c58; color: #57432f; } 38%,100% { background: #f6f1e8; border-color: #b7a994; color: #6a5848; } }
+@keyframes agent-signal { from { left: 0; opacity: .2; } 50% { opacity: .9; } to { left: 100%; opacity: .2; } }
+@media(max-width:1000px) { .intro-scan.personal-widget { gap: 35px; } .motion-profile.profile-carousel { padding-inline: 20px; } .motion-profile .carousel-progress { margin-inline: -20px; } .motion-profile .profile-slide h2 { font-size: 25px; } .motion-profile .rolling-award { gap: 12px; } .motion-profile .rolling-award > span, .motion-profile .rolling-award.secondary > span { min-width: 70px; width: 70px; font-size: 28px; } .motion-profile .rolling-award h2 { font-size: 21px; } .motion-profile .carousel-controls > div { gap: 10px; } .motion-profile .carousel-controls button { font-size: 10px; } .intro-proof { gap: 10px; } .intro-proof span { font-size: 11px; } }
+@media(max-width:750px) { .intro-scan.personal-widget { gap: 28px; padding-block: 34px; } .intro-main { max-width: 540px; } .motion-profile { width: 100%; } .motion-profile .profile-slides { min-height: 355px; } .motion-profile .profile-slide h2 { font-size: 28px; } .motion-profile .rolling-award { gap: 22px; } .motion-profile .rolling-award > span, .motion-profile .rolling-award.secondary > span { min-width: 100px; width: 100px; font-size: 33px; } .motion-profile .rolling-award h2 { font-size: 24px; } .motion-profile .carousel-controls button { font-size: 12px; } .motion-profile .carousel-controls > div { gap: 20px; } .placement-wires { top: 65px; transform: translateX(-50%) scale(.8); } .agent-art i::after { inset: 0 -2px; height: 5px; width: 5px; animation-name: agent-signal-vertical; } }
+@keyframes agent-signal-vertical { from { top: 0; opacity: .2; } 50% { opacity: .9; } to { top: 100%; opacity: .2; } }
+@media(max-width:480px) { .intro-proof { margin-top: 19px; gap: 10px; padding-block: 13px; } .intro-proof strong { font-size: 20px; } .intro-proof span { font-size: 11px; line-height: 1.6; } .intro-actions { margin-top: 20px; } .motion-profile.profile-carousel { padding: 20px 19px 0; } .motion-profile .profile-slides { min-height: 370px; } .motion-profile .carousel-top { margin-bottom: 18px; } .motion-profile .carousel-top > span { font-size: 9px; } .motion-profile .slide-label { font-size: 9px; } .motion-profile .profile-slide h2 { font-size: 27px; } .motion-profile .slide-role { font-size: 14px; } .motion-profile .slide-detail { font-size: 13px; } .motion-profile .rolling-award > span, .motion-profile .rolling-award.secondary > span { width: 66px; min-width: 66px; font-size: 28px; } .motion-profile .rolling-award { gap: 15px; } .motion-profile .rolling-award h2 { font-size: 21px; } .motion-profile .rolling-award.secondary strong { font-size: 14px; } .motion-profile .rolling-award p { font-size: 11px; } .motion-profile .carousel-controls { padding-block: 11px; } .motion-profile .carousel-controls > div { gap: 12px; } .motion-profile .carousel-controls button { font-size: 10px; min-height: 44px; } .motion-profile .carousel-controls > span { font-size: 9px; } .motion-profile .carousel-progress { margin-inline: -19px; } .placement-wires { top: 12px; transform: translateX(-50%) scale(.9); } .agent-art i::after { inset: -2px 0; animation-name: agent-signal; } }
+@media(prefers-reduced-motion:reduce) { .project-cover *, .project-cover *::after { animation: none!important; } }
+
+/* Reserve the same space for every slide to prevent the page from shifting. */
+.motion-profile .profile-slides { min-height: 400px; }
+.project-cover:not(.motion-visible) *::after { animation-play-state: paused!important; }
+@media(max-width:350px) {
+  .motion-profile .profile-slides { min-height: 450px; }
+  .motion-profile .academic-average { flex-direction: row; align-items: center; gap: 14px; }
+  .motion-profile .academic-average > strong { font-size: 55px; }
+  .motion-profile .academic-average > p { font-size: 12px; }
+}
