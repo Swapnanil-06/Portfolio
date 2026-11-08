@@ -3,13 +3,11 @@
   const gameUrl = 'https://agent-arena-paintball.vercel.app/';
   const chat = document.getElementById('portfolio-chat');
   const launcher = document.getElementById('chat-launcher');
-  const frame = document.getElementById('portfolio-chat-frame');
-  const loading = document.getElementById('chat-loading');
   const closeChatButton = document.getElementById('close-portfolio-chat');
   const studio = document.getElementById('project-studio-dialog');
   const notes = document.getElementById('project-dialog');
   const stage = document.querySelector('.project-stage');
-  let chatOpener = launcher, loadingTimer;
+  let chatOpener = launcher;
 
   function openChat(trigger = launcher) {
     // Leave native modal layers before opening the modeless hotel-style chat.
@@ -25,16 +23,11 @@
     chat.hidden = false;
     launcher.setAttribute('aria-expanded', 'true');
     launcher.classList.add('is-open');
-    if (!frame.hasAttribute('src')) {
-      frame.src = frame.dataset.src;
-      loadingTimer = setTimeout(() => {
-        loading.querySelector('p').textContent = 'The assistant may be waking up. You can also open it on Hugging Face.';
-      }, 15000);
-    }
     if (wasHidden && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
       chat.animate([{opacity: 0, transform: 'translateY(14px) scale(.98)'}, {opacity: 1, transform: 'none'}], {duration: 220, easing: 'ease-out'});
     }
     closeChatButton.focus({preventScroll: true});
+    document.dispatchEvent(new Event('portfolio-chat-opened'));
   }
   function closeChat() {
     chat.hidden = true;
@@ -45,12 +38,6 @@
   }
   launcher.onclick = () => chat.hidden ? openChat(launcher) : closeChat();
   closeChatButton.onclick = closeChat;
-  frame.addEventListener('load', () => {
-    // The frame stays mounted across close/reopen, preserving this conversation.
-    if (!frame.hasAttribute('src')) return;
-    clearTimeout(loadingTimer);
-    loading.hidden = true;
-  });
   chat.addEventListener('keydown', event => {
     if (event.key === 'Escape') { event.preventDefault(); closeChat(); }
   });
