@@ -175,7 +175,7 @@
   }
   function wake() { if(!frame&&visible) { last=performance.now();frame=requestAnimationFrame(tick); } }
   function resize() {
-    const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);w=rect.width;h=rect.height;
+    const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);if(!rect.width||!rect.height)return;w=rect.width;h=rect.height;
     canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);scale=Math.min(w/770,h/420);
     if(key) {
       document.querySelector('.stage-coordinate').textContent=key==='arena'?(innerWidth<=560?'TAP TO MOVE':'DRAG TO ORBIT'):'CLICK TO EXPLORE';
@@ -237,11 +237,5 @@
   new MutationObserver(wake).observe(bench,{attributes:true,attributeFilter:['class']});
   new MutationObserver(wake).observe(document.body,{attributes:true,attributeFilter:['class']});
   document.addEventListener('visibilitychange',wake);media.addEventListener('change',()=>{draw();wake();});
-  // On phones the visual leads; the full, readable summaries follow it.
-  // Move the DOM too so keyboard order follows the same arrangement.
-  const phoneLayout=matchMedia('(max-width:560px)');
-  const projectBody=document.querySelector('.project-browse-body');
-  function arrangeStage() { if(phoneLayout.matches)projectBody.prepend(stage);else projectBody.append(stage); }
-  arrangeStage();phoneLayout.addEventListener('change',arrangeStage);
   select(bench.dataset.activeProject||'arena');resize();
 })();
